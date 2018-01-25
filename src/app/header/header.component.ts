@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { DataStorageService } from "../shared/data-storage.service";
+import { HttpErrorResponse } from "@angular/common/http/";
 
 @Component({
   selector: 'app-header',
@@ -6,5 +8,28 @@ import { Component } from "@angular/core";
   // styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  show:boolean;
+
+  constructor(private dataStorageService:DataStorageService){}
+  
+  isShow(e){
+    this.show = e; 
+  }
+
+  onSaveData(){
+    this.dataStorageService.storeRecipe()
+    .subscribe(
+      (response)=>{
+        console.log(response);
+      },
+      (error:HttpErrorResponse)=>{
+        console.log(error);
+      }
+    );
+  }
+
+  onFetchData(){
+    this.dataStorageService.getRecipes();
+  }
 
 }
