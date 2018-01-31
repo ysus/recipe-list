@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { DataStorageService } from "../shared/data-storage.service";
+import { DataStorageService } from "../../shared/data-storage.service";
 import { HttpErrorResponse } from "@angular/common/http/";
-import { AuthService } from "../auth/auth.service";
+import { AuthService } from "../../auth/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ import { AuthService } from "../auth/auth.service";
 export class HeaderComponent {
   show:boolean;
 
-  constructor(private dataStorageService:DataStorageService, private authService:AuthService){}
+  constructor(private dataStorageService:DataStorageService, public authService:AuthService){}
   
   isShow(e){
     this.show = e; 
